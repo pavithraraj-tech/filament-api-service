@@ -38,13 +38,7 @@ class TokenResource extends Resource
                             ->required(),
                         Select::make('tokenable_id')
                             ->options(User::all()->pluck('name', 'id'))
-                            ->label('User')
-                            ->hidden(function () {
-                                $user = auth()->user();
-
-                                return ! $user->hasRole('super_admin');
-                            })
-                            ->required(),
+                            ->label('User'),
                     ]),
 
                 Section::make('Abilities')
@@ -107,10 +101,6 @@ class TokenResource extends Resource
             ])
             ->modifyQueryUsing(function (Builder $query) {
                 $authenticatedUser = auth()->user();
-
-                if (method_exists($authenticatedUser, 'hasRole') && $authenticatedUser->hasRole('super_admin')) {
-                    return $query;
-                }
 
                 return $query->where('tokenable_id', $authenticatedUser->id);
             });
