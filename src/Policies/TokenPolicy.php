@@ -12,7 +12,7 @@ class TokenPolicy
 
     public function isPolicyEnabled(): bool
     {
-        return config('api-service.models.token.enable_policy', true);
+        return true;
     }
 
     /**
@@ -20,11 +20,7 @@ class TokenPolicy
      */
     public function viewAny(User $user): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('view_any_token');
+        return true;
     }
 
     /**
@@ -32,11 +28,7 @@ class TokenPolicy
      */
     public function view(User $user, Token $token): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('view_token') && $token->tokenable_id === $user->id;
+        return true;
     }
 
     /**
@@ -44,11 +36,7 @@ class TokenPolicy
      */
     public function create(User $user): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('create_token');
+        return true;
     }
 
     /**
@@ -56,11 +44,7 @@ class TokenPolicy
      */
     public function update(User $user, Token $token): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('update_token') && $token->tokenable_id === $user->id;
+        return true;
     }
 
     /**
@@ -68,12 +52,7 @@ class TokenPolicy
      */
     public function delete(User $user, Token $token): bool
     {
-
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('delete_token') && $token->tokenable_id === $user->id;
+        return true;
     }
 
     /**
@@ -81,11 +60,7 @@ class TokenPolicy
      */
     public function deleteAny(User $user): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('delete_any_token');
+        return true;
     }
 
     /**
@@ -93,11 +68,7 @@ class TokenPolicy
      */
     public function forceDelete(User $user, Token $token): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('force_delete_token') && $token->tokenable_id === $user->id;
+        return true;
     }
 
     /**
@@ -105,11 +76,7 @@ class TokenPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('force_delete_any_token');
+        return true;
     }
 
     /**
@@ -117,11 +84,7 @@ class TokenPolicy
      */
     public function restore(User $user, Token $token): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('restore_token') && $token->tokenable_id === $user->id;
+        return true;
     }
 
     /**
@@ -129,11 +92,7 @@ class TokenPolicy
      */
     public function restoreAny(User $user): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('restore_any_token');
+        return true;
     }
 
     /**
@@ -141,11 +100,7 @@ class TokenPolicy
      */
     public function replicate(User $user, Token $token): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('replicate_token') && $token->tokenable_id === $user->id;
+        return true;
     }
 
     /**
@@ -153,10 +108,6 @@ class TokenPolicy
      */
     public function reorder(User $user): bool
     {
-        if (! $this->isPolicyEnabled()) {
-            return true;
-        }
-
-        return $user->can('reorder_token');
+        return true;
     }
 }
